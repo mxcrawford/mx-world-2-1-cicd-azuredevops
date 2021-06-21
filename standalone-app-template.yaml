@@ -1,0 +1,76 @@
+apiVersion: privatecloud.mendix.com/v1alpha1
+kind: MendixApp
+metadata:
+  name: $(app_name)
+spec:
+  database: # Specification of Database CR
+    servicePlan: $(database_plan)
+  storage: # Specification of Storage CR
+    servicePlan: $(storage_plan)
+  mendixRuntimeVersion: 9.2.0.20531 # Mendix version to use for placeholder runtime image
+  sourceURL: $(mda_url) # URL of App's source MDA
+  appURL: $(app_url) # URL to access the app
+  tls: # Optional, can be omitted : set a custom TLS configuration, overriding the default operator configuration
+    # Enable or disable TLS for the app
+    enableTLS: false
+    # Optional: name of an existing kubernetes.io/tls secret containing the TLS certificate
+    #secretName: example-mendixapp-cert
+    # Optional: TLS certificate value (tls.crt)
+    #certificate: |-
+    #  -----BEGIN CERTIFICATE-----
+    #  [...]
+    #  -----END CERTIFICATE-----
+    # Optional: TLS key value (tls.key)
+    #key: |-
+    #  -----BEGIN PRIVATE KEY-----
+    #  [...]
+    #  -----END PRIVATE KEY-----
+  replicas: 1 # Number of replicas, set to 0 to stop all replicas
+  resources: # Optional, can be omitted : set resources for Mendix Runtime container
+    limits: # Upper limit - process will be stopped if it tries to use more
+      cpu: 500m # 500 millicores - half of a vCPU
+      memory: 512Mi # 512 megabytes - suitable for small-scale non-production apps
+    requests: # Lower limit - needs at least these resources
+      cpu: 250m
+      memory: 256Mi
+  runtimeDeploymentPodAnnotations: # Optional, can be omitted : set custom annotations for Mendix Runtime Pods
+    ## example: inject the Linkerd proxy sidecar
+    linkerd.io/inject: enabled
+  runtime: # Configuration of the Mendix Runtime
+    logAutosubscribeLevel: INFO # Default logging level
+    mxAdminPassword: $(MxAdmin_Password) # base64 encoded password for MendixAdmin user. In this example, 'Welc0me!'; can be left empty keep password unchanged
+    debuggerPassword: $(Debugger_Password) # base64 encoded password for debuggerPassword. In this example, 'Welc0me!';
+    dtapMode: D # Security & runtime mode: P for production, D for development
+    logLevels: # Optional, can be omitted : set custom log levels for specific nodes
+      NodeOne: CRITICAL
+      NodeTwo: DEBUG
+    scheduledEventExecution: NONE # Optional, can be omitted: specify which scheduled events should be enabled: ALL/NONE/SPECIFIED
+    #myScheduledEvents: # List which scheduled events should be enabled; should only be used if scheduledEventExecution is set to SPECIFIED
+    #  - MyFirstModule.MyScheduledEvent
+    # Mendix Runtime Jetty options, in JSON format; validated and applied by the mx-m2ee-sidecar container
+    jettyOptions: |-
+      {
+        "max_form_content_size": 10485760,
+        "use_blocking_connector": false
+      }
+    #environmentVariables: # Optional, can be omitted : set environment variables for the Mendix Runtime container
+      #- name: MY_ENVIRONMENT_VARIABLE # name of the environment variable
+        #value: debug # value of the environment variable
+        # valueFrom can be used instead of value to load values from a Secret:
+        #valueFrom:
+        #  secretKeyRef:
+        #    name: proxy-secret
+        #    key: java-proxy-secret
+      #- name: JAVA_TOOL_OPTIONS # name of the environment variable
+        #value: -Dhttp.proxyHost=10.0.0.100 -Dhttp.proxyPort=8080 -Dhttps.proxyHost=10.0.0.100 -Dhttps.proxyPort=8443 -Dhttp.nonProxyHosts="localhost|host.example.com"
+    #clientCertificates: # Optional, can be omitted : set client certificates for TLS authentication
+      #- key: Q0VSVElGSUNBVEU= # base64-encoded PKCS12 certificate
+        #password: # base64-encoded password for the certificate, cannot be empty
+        #pinTo: # Optional, list of web services or domain names where this certificate should be used
+        #- "www.example.com"
+        #- "service.www.example.com"
+    # All custom Mendix Runtime parameters go here, in JSON format; validated and applied by the mx-m2ee-sidecar container
+    customConfiguration: |-
+      {
+        "ApplicationRootUrl": "https://$(app_url)"
+      }
