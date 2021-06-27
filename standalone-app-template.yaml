@@ -40,7 +40,7 @@ spec:
     logAutosubscribeLevel: INFO # Default logging level
     mxAdminPassword: #{MxAdmin_Password}# # base64 encoded password for MendixAdmin user. In this example, 'Welc0me!'; can be left empty keep password unchanged
     debuggerPassword: #{Debugger_Password}# # base64 encoded password for debuggerPassword. In this example, 'Welc0me!';
-    dtapMode: D # Security & runtime mode: P for production, D for development
+    dtapMode: #{DTAP_mode}# # Security & runtime mode: P for production, D for development
     logLevels: # Optional, can be omitted : set custom log levels for specific nodes
       NodeOne: CRITICAL
       NodeTwo: DEBUG
