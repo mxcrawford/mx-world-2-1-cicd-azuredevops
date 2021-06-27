@@ -1,15 +1,15 @@
 apiVersion: privatecloud.mendix.com/v1alpha1
 kind: MendixApp
 metadata:
-  name: $(app_name)
+  name: #{app_name}#
 spec:
   database: # Specification of Database CR
-    servicePlan: $(database_plan)
+    servicePlan: #{database_plan}#
   storage: # Specification of Storage CR
-    servicePlan: $(storage_plan)
+    servicePlan: #{storage_plan}#
   mendixRuntimeVersion: 9.2.0.20531 # Mendix version to use for placeholder runtime image
-  sourceURL: $(mda_url) # URL of App's source MDA
-  appURL: $(app_url) # URL to access the app
+  sourceURL: #{mda_url}# # URL of App's source MDA
+  appURL: #{app_url}# # URL to access the app
   tls: # Optional, can be omitted : set a custom TLS configuration, overriding the default operator configuration
     # Enable or disable TLS for the app
     enableTLS: false
@@ -38,8 +38,8 @@ spec:
     linkerd.io/inject: enabled
   runtime: # Configuration of the Mendix Runtime
     logAutosubscribeLevel: INFO # Default logging level
-    mxAdminPassword: $(MxAdmin_Password) # base64 encoded password for MendixAdmin user. In this example, 'Welc0me!'; can be left empty keep password unchanged
-    debuggerPassword: $(Debugger_Password) # base64 encoded password for debuggerPassword. In this example, 'Welc0me!';
+    mxAdminPassword: #{MxAdmin_Password}# # base64 encoded password for MendixAdmin user. In this example, 'Welc0me!'; can be left empty keep password unchanged
+    debuggerPassword: #{Debugger_Password}# # base64 encoded password for debuggerPassword. In this example, 'Welc0me!';
     dtapMode: D # Security & runtime mode: P for production, D for development
     logLevels: # Optional, can be omitted : set custom log levels for specific nodes
       NodeOne: CRITICAL
@@ -72,5 +72,5 @@ spec:
     # All custom Mendix Runtime parameters go here, in JSON format; validated and applied by the mx-m2ee-sidecar container
     customConfiguration: |-
       {
-        "ApplicationRootUrl": "https://$(app_url)"
+        "ApplicationRootUrl": "https://#{app_url}#"
       }
