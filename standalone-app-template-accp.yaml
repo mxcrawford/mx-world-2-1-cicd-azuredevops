@@ -1,7 +1,7 @@
 apiVersion: privatecloud.mendix.com/v1alpha1
 kind: MendixApp
 metadata:
-  name: #{app_name}#
+  name: #{app_name_accp}#
 spec:
   database: # Specification of Database CR
     servicePlan: #{database_plan}#
