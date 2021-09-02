@@ -1,0 +1,386 @@
+{
+	"source": 2,
+	"revision": 28,
+	"description": null,
+	"createdBy": {
+		"displayName": "Alistair Crawford",
+		"url": "https://spsprodweu5.vssps.visualstudio.com/Adf572c84-237b-45f0-8b98-91c401828d20/_apis/Identities/3d81c34d-9812-400c-bd88-f99e4a331c6a",
+		"_links": {
+			"avatar": {
+				"href": "https://dev.azure.com/TechnicalEnablement/_apis/GraphProfile/MemberAvatars/aad.YzNkNTQwZTItYjc5MS03OGE5LTg3YzItZDEyYmNmZjc0ZmFh"
+			}
+		},
+		"id": "3d81c34d-9812-400c-bd88-f99e4a331c6a",
+		"uniqueName": "Alistair.Crawford@mendix.com",
+		"imageUrl": "https://dev.azure.com/TechnicalEnablement/_apis/GraphProfile/MemberAvatars/aad.YzNkNTQwZTItYjc5MS03OGE5LTg3YzItZDEyYmNmZjc0ZmFh",
+		"descriptor": "aad.YzNkNTQwZTItYjc5MS03OGE5LTg3YzItZDEyYmNmZjc0ZmFh"
+	},
+	"createdOn": "2021-06-27T22:10:16.793Z",
+	"modifiedBy": {
+		"displayName": "Alistair Crawford",
+		"url": "https://spsprodweu5.vssps.visualstudio.com/Adf572c84-237b-45f0-8b98-91c401828d20/_apis/Identities/3d81c34d-9812-400c-bd88-f99e4a331c6a",
+		"_links": {
+			"avatar": {
+				"href": "https://dev.azure.com/TechnicalEnablement/_apis/GraphProfile/MemberAvatars/aad.YzNkNTQwZTItYjc5MS03OGE5LTg3YzItZDEyYmNmZjc0ZmFh"
+			}
+		},
+		"id": "3d81c34d-9812-400c-bd88-f99e4a331c6a",
+		"uniqueName": "Alistair.Crawford@mendix.com",
+		"imageUrl": "https://dev.azure.com/TechnicalEnablement/_apis/GraphProfile/MemberAvatars/aad.YzNkNTQwZTItYjc5MS03OGE5LTg3YzItZDEyYmNmZjc0ZmFh",
+		"descriptor": "aad.YzNkNTQwZTItYjc5MS03OGE5LTg3YzItZDEyYmNmZjc0ZmFh"
+	},
+	"modifiedOn": "2021-06-30T09:57:41.610Z",
+	"isDeleted": false,
+	"lastRelease": {
+		"id": 78,
+		"name": "Release-17",
+		"artifacts": [],
+		"_links": {},
+		"description": "",
+		"releaseDefinition": {
+			"id": 10,
+			"projectReference": null,
+			"_links": {}
+		},
+		"createdOn": "2021-06-27T23:10:23.380Z",
+		"createdBy": {
+			"displayName": "Alistair Crawford",
+			"url": "https://spsprodweu5.vssps.visualstudio.com/Adf572c84-237b-45f0-8b98-91c401828d20/_apis/Identities/3d81c34d-9812-400c-bd88-f99e4a331c6a",
+			"_links": {
+				"avatar": {
+					"href": "https://dev.azure.com/TechnicalEnablement/_apis/GraphProfile/MemberAvatars/aad.YzNkNTQwZTItYjc5MS03OGE5LTg3YzItZDEyYmNmZjc0ZmFh"
+				}
+			},
+			"id": "3d81c34d-9812-400c-bd88-f99e4a331c6a",
+			"uniqueName": "Alistair.Crawford@mendix.com",
+			"imageUrl": "https://dev.azure.com/TechnicalEnablement/_apis/GraphProfile/MemberAvatars/aad.YzNkNTQwZTItYjc5MS03OGE5LTg3YzItZDEyYmNmZjc0ZmFh",
+			"descriptor": "aad.YzNkNTQwZTItYjc5MS03OGE5LTg3YzItZDEyYmNmZjc0ZmFh"
+		}
+	},
+	"variables": {
+		"system.debug": {
+			"value": "true"
+		}
+	},
+	"variableGroups": [],
+	"environments": [
+		{
+			"id": 36,
+			"name": "Stage 1",
+			"rank": 1,
+			"owner": {
+				"displayName": "Alistair Crawford",
+				"url": "https://spsprodweu5.vssps.visualstudio.com/Adf572c84-237b-45f0-8b98-91c401828d20/_apis/Identities/3d81c34d-9812-400c-bd88-f99e4a331c6a",
+				"_links": {
+					"avatar": {
+						"href": "https://dev.azure.com/TechnicalEnablement/_apis/GraphProfile/MemberAvatars/aad.YzNkNTQwZTItYjc5MS03OGE5LTg3YzItZDEyYmNmZjc0ZmFh"
+					}
+				},
+				"id": "3d81c34d-9812-400c-bd88-f99e4a331c6a",
+				"uniqueName": "Alistair.Crawford@mendix.com",
+				"imageUrl": "https://dev.azure.com/TechnicalEnablement/_apis/GraphProfile/MemberAvatars/aad.YzNkNTQwZTItYjc5MS03OGE5LTg3YzItZDEyYmNmZjc0ZmFh",
+				"descriptor": "aad.YzNkNTQwZTItYjc5MS03OGE5LTg3YzItZDEyYmNmZjc0ZmFh"
+			},
+			"variables": {},
+			"variableGroups": [],
+			"preDeployApprovals": {
+				"approvals": [
+					{
+						"rank": 1,
+						"isAutomated": true,
+						"isNotificationOn": false,
+						"id": 106
+					}
+				],
+				"approvalOptions": {
+					"requiredApproverCount": null,
+					"releaseCreatorCanBeApprover": false,
+					"autoTriggeredAndPreviousEnvironmentApprovedCanBeSkipped": false,
+					"enforceIdentityRevalidation": false,
+					"timeoutInMinutes": 0,
+					"executionOrder": 1
+				}
+			},
+			"deployStep": {
+				"id": 107
+			},
+			"postDeployApprovals": {
+				"approvals": [
+					{
+						"rank": 1,
+						"isAutomated": true,
+						"isNotificationOn": false,
+						"id": 108
+					}
+				],
+				"approvalOptions": {
+					"requiredApproverCount": null,
+					"releaseCreatorCanBeApprover": false,
+					"autoTriggeredAndPreviousEnvironmentApprovedCanBeSkipped": false,
+					"enforceIdentityRevalidation": false,
+					"timeoutInMinutes": 0,
+					"executionOrder": 2
+				}
+			},
+			"deployPhases": [
+				{
+					"deploymentInput": {
+						"parallelExecution": {
+							"parallelExecutionType": 0
+						},
+						"agentSpecification": {
+							"identifier": "ubuntu-18.04"
+						},
+						"skipArtifactsDownload": false,
+						"artifactsDownloadInput": {
+							"downloadInputs": []
+						},
+						"queueId": 18,
+						"demands": [],
+						"enableAccessToken": false,
+						"timeoutInMinutes": 0,
+						"jobCancelTimeoutInMinutes": 1,
+						"condition": "succeeded()",
+						"overrideInputs": {}
+					},
+					"rank": 1,
+					"phaseType": 1,
+					"name": "Agent job",
+					"refName": null,
+					"workflowTasks": [
+						{
+							"environment": {},
+							"taskId": "068d5909-43e6-48c5-9e01-7c8a94816220",
+							"version": "0.*",
+							"name": "Install Helm 3.4.0",
+							"refName": "",
+							"enabled": true,
+							"alwaysRun": false,
+							"continueOnError": false,
+							"timeoutInMinutes": 0,
+							"definitionType": "task",
+							"overrideInputs": {},
+							"condition": "succeeded()",
+							"inputs": {
+								"helmVersion": "3.4.0",
+								"checkLatestHelmVersion": "true",
+								"installKubeCtl": "true",
+								"kubectlVersion": "1.8.9",
+								"checkLatestKubeCtl": "true"
+							}
+						},
+						{
+							"environment": {},
+							"taskId": "8413c881-4959-43d5-8840-b4ea0ffc5cfd",
+							"version": "0.*",
+							"name": "Install Kubectl 1.21.1",
+							"refName": "",
+							"enabled": true,
+							"alwaysRun": false,
+							"continueOnError": false,
+							"timeoutInMinutes": 0,
+							"definitionType": "task",
+							"overrideInputs": {},
+							"condition": "succeeded()",
+							"inputs": {
+								"kubectlVersion": "1.21.1"
+							}
+						},
+						{
+							"environment": {},
+							"taskId": "46e4be58-730b-4389-8a2f-ea10b3e5e815",
+							"version": "2.*",
+							"name": "AKS Get Credentials",
+							"refName": "",
+							"enabled": true,
+							"alwaysRun": false,
+							"continueOnError": false,
+							"timeoutInMinutes": 0,
+							"definitionType": "task",
+							"overrideInputs": {},
+							"condition": "succeeded()",
+							"inputs": {
+								"connectedServiceNameARM": "7891a88f-aa02-440d-839f-c1b5d2154ac3",
+								"scriptType": "bash",
+								"scriptLocation": "inlineScript",
+								"scriptPath": "test.sh",
+								"inlineScript": "az aks get-credentials \\\n    --resource-group rg-my-cluster \\\n    --name my-cluster",
+								"scriptArguments": "",
+								"powerShellErrorActionPreference": "stop",
+								"addSpnToEnvironment": "false",
+								"useGlobalConfig": "false",
+								"cwd": "",
+								"failOnStandardError": "false",
+								"powerShellIgnoreLASTEXITCODE": "false"
+							}
+						},
+						{
+							"environment": {},
+							"taskId": "d9bafed4-0b18-4f58-968d-86655b4d2ce9",
+							"version": "2.*",
+							"name": "Helm Repo Update",
+							"refName": "",
+							"enabled": true,
+							"alwaysRun": false,
+							"continueOnError": false,
+							"timeoutInMinutes": 0,
+							"definitionType": "task",
+							"overrideInputs": {},
+							"condition": "succeeded()",
+							"inputs": {
+								"script": "helm repo add stable https://charts.helm.sh/stable && helm repo update",
+								"workingDirectory": "",
+								"failOnStderr": "false"
+							}
+						},
+						{
+							"environment": {},
+							"taskId": "d9bafed4-0b18-4f58-968d-86655b4d2ce9",
+							"version": "2.*",
+							"name": "Install Storage (Postgres)",
+							"refName": "",
+							"enabled": true,
+							"alwaysRun": false,
+							"continueOnError": false,
+							"timeoutInMinutes": 0,
+							"definitionType": "task",
+							"overrideInputs": {},
+							"condition": "succeeded()",
+							"inputs": {
+								"script": "helm install postgres-shared stable/postgresql \\\n--namespace=privatecloud-storage-standalone \\\n--set postgresqlPassword=Password1\\! \\\n--set image.tag=9.6 \\\n--set persistence.size=1Gi",
+								"workingDirectory": "",
+								"failOnStderr": "false"
+							}
+						},
+						{
+							"environment": {},
+							"taskId": "d9bafed4-0b18-4f58-968d-86655b4d2ce9",
+							"version": "2.*",
+							"name": "Install Storage (Minio)",
+							"refName": "",
+							"enabled": true,
+							"alwaysRun": false,
+							"continueOnError": false,
+							"timeoutInMinutes": 0,
+							"definitionType": "task",
+							"overrideInputs": {},
+							"condition": "succeeded()",
+							"inputs": {
+								"script": "helm install minio-shared stable/minio \\\n--namespace=privatecloud-storage-standalone \\\n--set accessKey=minioadmin \\\n--set secretKey=Password1\\! \\\n--set persistence.size=5Gi",
+								"workingDirectory": "",
+								"failOnStderr": "false"
+							}
+						},
+						{
+							"environment": {},
+							"taskId": "d9bafed4-0b18-4f58-968d-86655b4d2ce9",
+							"version": "2.*",
+							"name": "\"Now install Mx4pc cluster!\"",
+							"refName": "",
+							"enabled": true,
+							"alwaysRun": false,
+							"continueOnError": false,
+							"timeoutInMinutes": 0,
+							"definitionType": "task",
+							"overrideInputs": {},
+							"condition": "succeeded()",
+							"inputs": {
+								"script": "echo \"Now install Mx4pc cluster!\"",
+								"workingDirectory": "",
+								"failOnStderr": "false"
+							}
+						}
+					]
+				}
+			],
+			"environmentOptions": {
+				"emailNotificationType": "OnlyOnFailure",
+				"emailRecipients": "release.environment.owner;release.creator",
+				"skipArtifactsDownload": false,
+				"timeoutInMinutes": 0,
+				"enableAccessToken": false,
+				"publishDeploymentStatus": true,
+				"badgeEnabled": false,
+				"autoLinkWorkItems": false,
+				"pullRequestDeploymentEnabled": false
+			},
+			"demands": [],
+			"conditions": [
+				{
+					"name": "ReleaseStarted",
+					"conditionType": 1,
+					"value": ""
+				}
+			],
+			"executionPolicy": {
+				"concurrencyCount": 1,
+				"queueDepthCount": 0
+			},
+			"schedules": [],
+			"currentRelease": {
+				"id": 78,
+				"url": "https://vsrm.dev.azure.com/TechnicalEnablement/d36155ba-10d2-4f78-b089-db5ccda3ffe3/_apis/Release/releases/78",
+				"_links": {}
+			},
+			"retentionPolicy": {
+				"daysToKeep": 30,
+				"releasesToKeep": 3,
+				"retainBuild": true
+			},
+			"processParameters": {},
+			"properties": {
+				"BoardsEnvironmentType": {
+					"$type": "System.String",
+					"$value": "unmapped"
+				},
+				"LinkBoardsWorkItems": {
+					"$type": "System.String",
+					"$value": "False"
+				}
+			},
+			"preDeploymentGates": {
+				"id": 0,
+				"gatesOptions": null,
+				"gates": []
+			},
+			"postDeploymentGates": {
+				"id": 0,
+				"gatesOptions": null,
+				"gates": []
+			},
+			"environmentTriggers": [],
+			"badgeUrl": "https://vsrm.dev.azure.com/TechnicalEnablement/_apis/public/Release/badge/d36155ba-10d2-4f78-b089-db5ccda3ffe3/10/36"
+		}
+	],
+	"artifacts": [],
+	"triggers": [],
+	"releaseNameFormat": "Release-$(rev:r)",
+	"tags": [],
+	"properties": {
+		"DefinitionCreationSource": {
+			"$type": "System.String",
+			"$value": "ReleaseNew"
+		},
+		"IntegrateBoardsWorkItems": {
+			"$type": "System.String",
+			"$value": "False"
+		},
+		"IntegrateJiraWorkItems": {
+			"$type": "System.String",
+			"$value": "false"
+		}
+	},
+	"id": 10,
+	"name": "release_mx4pc_initialsetup",
+	"path": "\\mendix_mx4pc",
+	"projectReference": null,
+	"url": "https://vsrm.dev.azure.com/TechnicalEnablement/d36155ba-10d2-4f78-b089-db5ccda3ffe3/_apis/Release/definitions/10",
+	"_links": {
+		"self": {
+			"href": "https://vsrm.dev.azure.com/TechnicalEnablement/d36155ba-10d2-4f78-b089-db5ccda3ffe3/_apis/Release/definitions/10"
+		},
+		"web": {
+			"href": "https://dev.azure.com/TechnicalEnablement/d36155ba-10d2-4f78-b089-db5ccda3ffe3/_release?definitionId=10"
+		}
+	}
+}
