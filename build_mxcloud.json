@@ -1,0 +1,271 @@
+{
+	"options": [
+		{
+			"enabled": false,
+			"definition": {
+				"id": "5d58cc01-7c75-450c-be18-a388ddb129ec"
+			},
+			"inputs": {
+				"branchFilters": "[\"+refs/heads/*\"]",
+				"additionalFields": "{}"
+			}
+		},
+		{
+			"enabled": false,
+			"definition": {
+				"id": "a9db38f9-9fdc-478c-b0f9-464221e58316"
+			},
+			"inputs": {
+				"workItemType": "Issue",
+				"assignToRequestor": "true",
+				"additionalFields": "{}"
+			}
+		}
+	],
+	"variables": {
+		"system.debug": {
+			"value": "true",
+			"allowOverride": true
+		}
+	},
+	"properties": {},
+	"tags": [],
+	"_links": {
+		"self": {
+			"href": "https://dev.azure.com/TechnicalEnablement/d36155ba-10d2-4f78-b089-db5ccda3ffe3/_apis/build/Definitions/7?revision=24"
+		},
+		"web": {
+			"href": "https://dev.azure.com/TechnicalEnablement/d36155ba-10d2-4f78-b089-db5ccda3ffe3/_build/definition?definitionId=7"
+		},
+		"editor": {
+			"href": "https://dev.azure.com/TechnicalEnablement/d36155ba-10d2-4f78-b089-db5ccda3ffe3/_build/designer?id=7&_a=edit-build-definition"
+		},
+		"badge": {
+			"href": "https://dev.azure.com/TechnicalEnablement/d36155ba-10d2-4f78-b089-db5ccda3ffe3/_apis/build/status/7"
+		}
+	},
+	"jobAuthorizationScope": 1,
+	"jobTimeoutInMinutes": 60,
+	"jobCancelTimeoutInMinutes": 5,
+	"process": {
+		"phases": [
+			{
+				"steps": [
+					{
+						"environment": {},
+						"enabled": true,
+						"continueOnError": false,
+						"alwaysRun": false,
+						"displayName": "Rest call POST api/1/apps/myapp/packages",
+						"timeoutInMinutes": 0,
+						"condition": "succeeded()",
+						"task": {
+							"id": "d8a3d2d0-20f9-11e7-b752-57165c2d4193",
+							"versionSpec": "0.*",
+							"definitionType": "task"
+						},
+						"inputs": {
+							"webserviceEndpoint": "a48fb20d-4840-4ac3-8ac8-7f85d424cd05",
+							"relativeUrl": "api/1/apps/myapp/packages",
+							"httpVerb": "POST",
+							"body": "{\n     \"Branch\" : \"trunk\" ,\n     \"Revision\" :  $(Build.SourceVersion),\n     \"Version\" :  \"1.0.$(Build.BuildId)\",\n     \"Description\" :  \"AZ DevOps $(Build.BuildId)\"\n}",
+							"contentType": "application/json",
+							"saveResponseToFile": "true",
+							"outputFilePath": "package.json",
+							"headers": "{\n\"Mendix-Username\": \"myname@email.com\",\n\"Mendix-ApiKey\":  \"5ffffa03-2779-6k02-8feg-d3cc869108f5\"\n}",
+							"allowInvalidSSLCertificate": "false",
+							"timeout": "120000"
+						}
+					},
+					{
+						"environment": {},
+						"enabled": true,
+						"continueOnError": false,
+						"alwaysRun": false,
+						"displayName": "Extract PackageId",
+						"timeoutInMinutes": 0,
+						"condition": "succeeded()",
+						"refName": "",
+						"task": {
+							"id": "ffd54dce-ce4f-4080-bdda-a110f334feff",
+							"versionSpec": "1.*",
+							"definitionType": "task"
+						},
+						"inputs": {
+							"jsonFile": "package.json",
+							"shouldPrefixVariables": "true",
+							"variablePrefix": "package"
+						}
+					},
+					{
+						"environment": {},
+						"enabled": true,
+						"continueOnError": false,
+						"alwaysRun": false,
+						"displayName": "Wait for 60 seconds",
+						"timeoutInMinutes": 0,
+						"condition": "succeeded()",
+						"task": {
+							"id": "5a775a50-3372-1290-9ce0-1579c1e597fb",
+							"versionSpec": "1.*",
+							"definitionType": "task"
+						},
+						"inputs": {
+							"Value": "60",
+							"Unit": "seconds"
+						}
+					},
+					{
+						"environment": {},
+						"enabled": true,
+						"continueOnError": false,
+						"alwaysRun": false,
+						"displayName": "Rest call GET api/1/apps/myapp/packages",
+						"timeoutInMinutes": 0,
+						"condition": "succeeded()",
+						"task": {
+							"id": "d8a3d2d0-20f9-11e7-b752-57165c2d4193",
+							"versionSpec": "0.*",
+							"definitionType": "task"
+						},
+						"inputs": {
+							"webserviceEndpoint": "a48fb20d-4840-4ac3-8ac8-7f85d424cd05",
+							"relativeUrl": "api/1/apps/myapp/packages/$(package.PackageId)",
+							"httpVerb": "GET",
+							"body": "{\n     \"Branch\" : \"trunk\" ,\n     \"Revision\" :  $(Build.SourceVersion),\n     \"Version\" :  \"1.0.$(Build.BuildId)\",\n     \"Description\" :  \"AZ DevOps $(Build.BuildId)\"\n}",
+							"contentType": "application/json",
+							"saveResponseToFile": "true",
+							"outputFilePath": "output.json",
+							"headers": "{\n\"Mendix-Username\": \"myname@email.com\",\n\"Mendix-ApiKey\":  \"5ffffa03-2779-6k02-8feg-d3cc869108f5\"\n}",
+							"allowInvalidSSLCertificate": "false",
+							"timeout": "120000"
+						}
+					},
+					{
+						"environment": {},
+						"enabled": true,
+						"continueOnError": false,
+						"alwaysRun": false,
+						"displayName": "Extract Status",
+						"timeoutInMinutes": 0,
+						"condition": "succeeded()",
+						"task": {
+							"id": "ffd54dce-ce4f-4080-bdda-a110f334feff",
+							"versionSpec": "1.*",
+							"definitionType": "task"
+						},
+						"inputs": {
+							"jsonFile": "output.json",
+							"shouldPrefixVariables": "true",
+							"variablePrefix": "package"
+						}
+					},
+					{
+						"environment": {},
+						"enabled": true,
+						"continueOnError": false,
+						"alwaysRun": false,
+						"displayName": "Publish Artifact: package",
+						"timeoutInMinutes": 0,
+						"condition": "succeeded()",
+						"task": {
+							"id": "2ff763a7-ce83-4e1f-bc89-0ae63477cebe",
+							"versionSpec": "1.*",
+							"definitionType": "task"
+						},
+						"inputs": {
+							"PathtoPublish": "$(System.DefaultWorkingDirectory)\\package.json",
+							"ArtifactName": "package",
+							"ArtifactType": "Container",
+							"TargetPath": "",
+							"Parallel": "false",
+							"ParallelCount": "8",
+							"FileCopyOptions": "",
+							"StoreAsTar": "false"
+						}
+					}
+				],
+				"name": "Agent job 1",
+				"refName": "Job_1",
+				"condition": "succeeded()",
+				"target": {
+					"executionOptions": {
+						"type": 0
+					},
+					"allowScriptsAuthAccessOption": false,
+					"type": 1
+				},
+				"jobAuthorizationScope": 1
+			}
+		],
+		"target": {
+			"agentSpecification": {
+				"identifier": "windows-2019"
+			}
+		},
+		"type": 1
+	},
+	"repository": {
+		"properties": {
+			"cleanOptions": "0",
+			"svnMapping": "{\"mappings\":[{\"serverPath\":\"$(build.sourceBranch)\",\"localPath\":\"trunk\",\"revision\":\"HEAD\",\"depth\":3,\"ignoreExternals\":true}]}",
+			"connectedServiceId": "0e9ba99b-3bc2-4b83-aed7-bd3fbaeae873"
+		},
+		"id": "https://teamserver.sprintr.com/567ca80b-074d-4ba2-948f-3424759e0fbf",
+		"type": "Svn",
+		"name": "567ca80b-074d-4ba2-948f-3424759e0fbf",
+		"url": "https://teamserver.sprintr.com/567ca80b-074d-4ba2-948f-3424759e0fbf",
+		"defaultBranch": "trunk",
+		"clean": "false",
+		"checkoutSubmodules": false
+	},
+	"processParameters": {},
+	"quality": 1,
+	"authoredBy": {
+		"displayName": "Alistair Crawford",
+		"url": "https://spsprodweu5.vssps.visualstudio.com/Adf572c84-237b-45f0-8b98-91c401828d20/_apis/Identities/3d81c34d-9812-400c-bd88-f99e4a331c6a",
+		"_links": {
+			"avatar": {
+				"href": "https://dev.azure.com/TechnicalEnablement/_apis/GraphProfile/MemberAvatars/aad.YzNkNTQwZTItYjc5MS03OGE5LTg3YzItZDEyYmNmZjc0ZmFh"
+			}
+		},
+		"id": "3d81c34d-9812-400c-bd88-f99e4a331c6a",
+		"uniqueName": "Alistair.Crawford@mendix.com",
+		"imageUrl": "https://dev.azure.com/TechnicalEnablement/_apis/GraphProfile/MemberAvatars/aad.YzNkNTQwZTItYjc5MS03OGE5LTg3YzItZDEyYmNmZjc0ZmFh",
+		"descriptor": "aad.YzNkNTQwZTItYjc5MS03OGE5LTg3YzItZDEyYmNmZjc0ZmFh"
+	},
+	"drafts": [],
+	"queue": {
+		"_links": {
+			"self": {
+				"href": "https://dev.azure.com/TechnicalEnablement/_apis/build/Queues/18"
+			}
+		},
+		"id": 18,
+		"name": "Azure Pipelines",
+		"url": "https://dev.azure.com/TechnicalEnablement/_apis/build/Queues/18",
+		"pool": {
+			"id": 9,
+			"name": "Azure Pipelines",
+			"isHosted": true
+		}
+	},
+	"id": 7,
+	"name": "build_mxcloud",
+	"url": "https://dev.azure.com/TechnicalEnablement/d36155ba-10d2-4f78-b089-db5ccda3ffe3/_apis/build/Definitions/7?revision=24",
+	"uri": "vstfs:///Build/Definition/7",
+	"path": "\\",
+	"type": 2,
+	"queueStatus": 0,
+	"revision": 24,
+	"createdDate": "2021-06-28T02:05:38.840Z",
+	"project": {
+		"id": "d36155ba-10d2-4f78-b089-db5ccda3ffe3",
+		"name": "Mendix World CICD",
+		"url": "https://dev.azure.com/TechnicalEnablement/_apis/projects/d36155ba-10d2-4f78-b089-db5ccda3ffe3",
+		"state": 1,
+		"revision": 20,
+		"visibility": 0,
+		"lastUpdateTime": "2021-05-27T09:18:30.740Z"
+	}
+}

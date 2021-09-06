@@ -195,28 +195,226 @@ Once this is done, we can go into Azure DevOps and start creating our Initial Se
 
 As a basis, we are going to import a release that I created beforehand for the initial setup: [release_mx4pc_initialsetup.json](release_mx4pc_initialsetup.json)
 
-TODO:
-- How to import existing release
-- How to Create Azure Resource Manager connection
+To import and use the existing pipeline we will follow the instructions under Step C from the advanced Kubernetes guide here: https://github.com/MXClyde/mendix-kubernetes-azure#step-c-setting-up-build-and-release-pipelines-using-azure-devops
+
+Under Step C, follow the instructions for: 
+1. Azure Resource Manager Service Connection 
+   This is needed to connect to your Azure Kubernetes Cluster and load the credentials
+
+2. Importing the initial deployment pipelne using the file: [release_mx4pc_initialsetup.json](release_mx4pc_initialsetup.json)
+
+Lastly, once imported, we will need to customise the above release as follows for the respective steps:
+
+1. Install Helm
+
+You should not need to customise this for some time until a newer version of helm is needed
+
+2. Install Kubectl
+
+Make sure the version you use for Kubectl is compatible with the version of Kubernetes running in your Azure cluster
+
+3. AKS Get Credentials
+
+First make sure to select the Azure Resource Manager Service Connection that you created beforehand
+
+And lastly customise the script to your cluster details under the "Inline Script" field e.g.
+
+```
+az aks get-credentials \
+    --resource-group rg-my-cluster \
+    --name my-cluster
+```
+
+4. Helm Repo Update
+
+This should remain the same unless the chart locations change
+
+5. Install Database (Postgres)
+
+Customise the Script to reflect how you would like the Postgress installation to be (Maybe you use another database provider etc). Make sure to use the same namespace as you created a the beginning of the Initial Setup e.g:
+
+```
+helm install postgres-shared stable/postgresql \
+--namespace=privatecloud-storage \
+--set postgresqlPassword=Password1\! \
+--set image.tag=9.6 \
+--set persistence.size=1Gi
+```
+
+6. Install Storage (Minio)
+
+Customise the script to reflect how you need your storage setup with a different provider for example or different details. Make sure to use the same namespace as you created a the beginning of the Initial Setup e.g:
+
+```
+helm install minio-shared stable/minio \
+--namespace=privatecloud-storage \
+--set accessKey=minioadmin \
+--set secretKey=Password1\! \
+--set persistence.size=5Gi
+```
+
+7. Last step
+
+Now we can run this release pipeline by clicking "Create Release".
 
 ### 3 Create Cluster in Cloud Portal
 
-TODO:
-Portal Screenshots
-GUI setup and SCreens
+Next we need to create the cluster inside the Mendix portal to help us with the installation of the Mendix Operator.
+
+Go to https://privatecloud.mendixcloud.com/ and register a new, STANDALONE cluster on AKS. Select the operating system where you are running your shell connected to the cluster (easiest is to run it usnig Azure's Cloud shell) More documentation [here](https://docs.mendix.com/developerportal/deploy/private-cloud-cluster#:~:text=3.1%20Creating%20a%20Cluster&text=Click%20Set%20up%20Mendix%20for,Click%20Register%20Cluster.)
+
+
+![alt text](https://s3.eu-central-1.amazonaws.com/mendixdemo.com/Screenshots/NewNamespace.png "NewNamespace")
+
+![alt text](https://s3.eu-central-1.amazonaws.com/mendixdemo.com/Screenshots/DownloadInstaller.png "Download Installer")
+
+Run the installer using the given command 
+```
+./mxpc-cli installer -n my-cluster
+```
+Now follow the steps to setup your cluster from Step 4 here: https://docs.mendix.com/developerportal/deploy/private-cloud-cluster
+
+
+### 3.1 Database
+
+Enter the same access details from the Initial Setup
+
+Host: [install name].namespace.svc.cluster.local e.g.
+
+```
+postgres-shared-postgresql.privatecloud-storage.svc.cluster.local
+```
+
+### 3.2 File Storage
+
+Enter the same access details from the Initial Setup
+
+Endpoint: http://[install name].namespace.svc.cluster.local:9000 e.g.
+```
+http://minio-shared.privatecloud-storage.svc.cluster.local:9000  
+```
+
+### 3.3 Ingress
+
+Domain name: The base domain you plan to use so for app1.example.com you will use:
+```example.com```
+
+You will need to own the domain and point it to the external address of the Kubernetes Cluster
+
+### 3.4 Registry
+
+Pull & Push URLs:
+
+```
+[registry_name].azurecr.io
+
+e.g. mycontainerregistry.azurecr.io
+```
 
 ### 4 Custom Resource Definitions
-TODO:
-Explanation and link to CRDs
-Github .yaml file
+
+Once the Cluster setup has been done, its a great idea to learn a bit about Custom Resources with Kubernetes: https://kubernetes.io/docs/concepts/extend-kubernetes/api-extension/custom-resources/
+
+The Mendix for Private Cloud offering has the Mendix Operator to make use of Mendix Custom Resources (CRs). You can read more here: https://docs.mendix.com/developerportal/deploy/private-cloud-operator
+
+We have templatized the Mendix Custom Resources yaml example to automate things somewhat - it can be further expanded on for your needs, an example can be found in this repo. We also have an example pipeline that makes use of these templatized versions for you to provide variables to be replaced in the file inside Azure DevOps:
+Accp: [standalone-app-template-accp.yaml](standalone-app-template-accp.yaml)
+Prod: [standalone-app-template.yaml](standalone-app-template.yaml)
 
 ### 5 App Onboarding / Deployment
 
-TODO:
-Build pipeline using mxbuild.py
-Import existing pipeline
+### 5.1 Build Pipeline
+
+Before we can onboard (and deploy) our app we need to create a .mda Deployment package and upload it to an internet-accessible URL. In our case we use a public Azure Blob storage (We RECOMMEND ABSOLUTELY using something more secure)
+
+In this case we have an example Build pipeline that can be imported into Azure DevOps ([How to import](https://akhilsharma.work/import-export-ci-pipeline-from-azure-devops/))
+
+The JSON file can be found here: [build_mx4pc_mda_k8s-testapp.json](build_mx4pc_mda_k8s-testapp.json)
+
+Adjust the following details in the respective tasks for the pipeline you have now imported:
+
+### Download mxbuild.py
+
+Here we download a mxbuild.py script to help us build the correct Mendix mda package
+
+No changes needed
+
+### Run mxbuild.py
+
+Put the Mendix TeamServer Username and Password (Email Address & Password for home.mendix.com) inthe the "Arguments" field in this task
+
+To make this easier you can add Mendix.Username and Mendix.Password variables to your pipeline to pass through in an automated way
+
+### Upload files to Azure Storage container
+
+Here you will need to select your Azure Resource Manager Connection from the dropdown (we created this earlier)
+
+Next make sure your Location is correct and storage account and container lines up with the Azure Blob Storage you have created to be used for the mda packages. 
+
+If you are not using Azure Blob storage you will replace this step with the upload method of your choice to the location of your choice
+
+### Write MDA URL to file
+
+No changes unless you are NOT using Azure Blob Storage
+
+If you are not using Azure blob storage you can replace the templated url with the Internet accessible URL you are using:
+
+Replace ```https://$(Storage.name).blob.core.windows.net/$(Storage.container)/D:/a/1/s/builds/project_$(Build.SourceVersion)_$(Build.BuildId).mda``` with ```https://your-mda-url.mda```
+
+### 5.2 Release Pipeline
+
+Lastly we need to use this mda package we've created and write the rest of the details for our app into the CR yaml file and deploy it.
+
+For this we have an example release pipeline that you can import into Azure DevOps which you can find here:[release_mx4pc_deploy-k8stestapp.json](release_mx4pc_deploy-k8stestapp.json)
+
+Once imported you will first need to select the Build pipeline we created before, as the input/incoming artifact for the release:
+
+![alt text](https://s3.eu-central-1.amazonaws.com/mendixdemo.com/Screenshots/BuildArtifact.png "ArtifactBuild")
+
+Once the build pipeline is selected, you will need to customise some of the details for the tasks in the Release Pipeline:
+
+### 1. Download App Template YAML
+
+No changes needed unless you want to use a different template. This downloads the templatised CR files:
+
+Accp: [standalone-app-template-accp.yaml](standalone-app-template-accp.yaml)
+Prod: [standalone-app-template.yaml](standalone-app-template.yaml)
+
+Use the correct file for the appropriate environment
+
+Make sure all of the variables inside the template are available inside your release and are created when you run the release.  
+
+![alt text](https://s3.eu-central-1.amazonaws.com/mendixdemo.com/Screenshots/Variables.png "Variables")
+
+### 2. Replace tokens in **/*.yaml
+
+No changes needed. This will take all of the tokens in the templatised .yaml file and replace them with the variable and system values
+
+### 3. Deploy app to Kubernetes cluster
+
+Here you will need to add a "Kubernetes service connection" to your Azure DevOps project similar to the "Azure Resource Management Connection" we added earlier.  For the non-Azure Kubernetes clusters, you can use the kubeconfig file to configure (More [here](https://docs.microsoft.com/en-us/azure/devops/pipelines/library/service-endpoints?view=azure-devops&tabs=yaml#kubernetes-service-connection)) 
+
+This will use the ```kubectl apply`` operation on the cluster using the .yaml CR file.
+
+Now we should be able to run the release.
+
+You can use 
+
+```kubectl get mendixapp -n=my-namespace```
+or
+```kubectl get pods -n=my-namespace```
+
+to check if this has worked as expected
 
 ## Option 3 Mendix Public Cloud
 
-TODO:
-Import existing pipeline
+This is a nice and simple option and we have created an example build and release pipeline you can use:
+
+Build: [build_mxcloud.json](build_mxcloud.json)
+Release: [release_mxcloud.json](release_mxcloud.json)
+
+These make use of the Build and Deploy APIs from the Mendix portal: https://docs.mendix.com/apidocs-mxsdk/apidocs/
+
+You will need to update the service endpoints for each REST call or use a Web Service Endpoint: https://docs.microsoft.com/en-us/azure/devops/extend/develop/service-endpoints?view=azure-devops
+
+This does require a Mendix Cloud license.

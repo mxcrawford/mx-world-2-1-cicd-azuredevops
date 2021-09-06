@@ -1,0 +1,793 @@
+{
+	"source": 2,
+	"revision": 23,
+	"description": null,
+	"createdBy": {
+		"displayName": "Alistair Crawford",
+		"url": "https://spsprodweu5.vssps.visualstudio.com/Adf572c84-237b-45f0-8b98-91c401828d20/_apis/Identities/3d81c34d-9812-400c-bd88-f99e4a331c6a",
+		"_links": {
+			"avatar": {
+				"href": "https://dev.azure.com/TechnicalEnablement/_apis/GraphProfile/MemberAvatars/aad.YzNkNTQwZTItYjc5MS03OGE5LTg3YzItZDEyYmNmZjc0ZmFh"
+			}
+		},
+		"id": "3d81c34d-9812-400c-bd88-f99e4a331c6a",
+		"uniqueName": "User@email.com",
+		"imageUrl": "https://dev.azure.com/TechnicalEnablement/_apis/GraphProfile/MemberAvatars/aad.YzNkNTQwZTItYjc5MS03OGE5LTg3YzItZDEyYmNmZjc0ZmFh",
+		"descriptor": "aad.YzNkNTQwZTItYjc5MS03OGE5LTg3YzItZDEyYmNmZjc0ZmFh"
+	},
+	"createdOn": "2021-06-28T01:23:58.577Z",
+	"modifiedBy": {
+		"displayName": "Alistair Crawford",
+		"url": "https://spsprodweu5.vssps.visualstudio.com/Adf572c84-237b-45f0-8b98-91c401828d20/_apis/Identities/3d81c34d-9812-400c-bd88-f99e4a331c6a",
+		"_links": {
+			"avatar": {
+				"href": "https://dev.azure.com/TechnicalEnablement/_apis/GraphProfile/MemberAvatars/aad.YzNkNTQwZTItYjc5MS03OGE5LTg3YzItZDEyYmNmZjc0ZmFh"
+			}
+		},
+		"id": "3d81c34d-9812-400c-bd88-f99e4a331c6a",
+		"uniqueName": "User@email.com",
+		"imageUrl": "https://dev.azure.com/TechnicalEnablement/_apis/GraphProfile/MemberAvatars/aad.YzNkNTQwZTItYjc5MS03OGE5LTg3YzItZDEyYmNmZjc0ZmFh",
+		"descriptor": "aad.YzNkNTQwZTItYjc5MS03OGE5LTg3YzItZDEyYmNmZjc0ZmFh"
+	},
+	"modifiedOn": "2021-06-28T02:01:42.840Z",
+	"isDeleted": false,
+	"lastRelease": {
+		"id": 88,
+		"name": "Release-8",
+		"artifacts": [],
+		"_links": {},
+		"description": "Triggered by build_mxcloud 76.",
+		"releaseDefinition": {
+			"id": 12,
+			"projectReference": null,
+			"_links": {}
+		},
+		"createdOn": "2021-06-28T02:07:40.860Z",
+		"createdBy": {
+			"displayName": "Alistair Crawford",
+			"url": "https://spsprodweu5.vssps.visualstudio.com/Adf572c84-237b-45f0-8b98-91c401828d20/_apis/Identities/3d81c34d-9812-400c-bd88-f99e4a331c6a",
+			"_links": {
+				"avatar": {
+					"href": "https://dev.azure.com/TechnicalEnablement/_apis/GraphProfile/MemberAvatars/aad.YzNkNTQwZTItYjc5MS03OGE5LTg3YzItZDEyYmNmZjc0ZmFh"
+				}
+			},
+			"id": "3d81c34d-9812-400c-bd88-f99e4a331c6a",
+			"uniqueName": "User@email.com",
+			"imageUrl": "https://dev.azure.com/TechnicalEnablement/_apis/GraphProfile/MemberAvatars/aad.YzNkNTQwZTItYjc5MS03OGE5LTg3YzItZDEyYmNmZjc0ZmFh",
+			"descriptor": "aad.YzNkNTQwZTItYjc5MS03OGE5LTg3YzItZDEyYmNmZjc0ZmFh"
+		}
+	},
+	"variables": {
+		"System.Debug": {
+			"value": "true"
+		}
+	},
+	"variableGroups": [],
+	"environments": [
+		{
+			"id": 39,
+			"name": "Acceptance",
+			"rank": 1,
+			"owner": {
+				"displayName": "Alistair Crawford",
+				"url": "https://spsprodweu5.vssps.visualstudio.com/Adf572c84-237b-45f0-8b98-91c401828d20/_apis/Identities/3d81c34d-9812-400c-bd88-f99e4a331c6a",
+				"_links": {
+					"avatar": {
+						"href": "https://dev.azure.com/TechnicalEnablement/_apis/GraphProfile/MemberAvatars/aad.YzNkNTQwZTItYjc5MS03OGE5LTg3YzItZDEyYmNmZjc0ZmFh"
+					}
+				},
+				"id": "3d81c34d-9812-400c-bd88-f99e4a331c6a",
+				"uniqueName": "User@email.com",
+				"imageUrl": "https://dev.azure.com/TechnicalEnablement/_apis/GraphProfile/MemberAvatars/aad.YzNkNTQwZTItYjc5MS03OGE5LTg3YzItZDEyYmNmZjc0ZmFh",
+				"descriptor": "aad.YzNkNTQwZTItYjc5MS03OGE5LTg3YzItZDEyYmNmZjc0ZmFh"
+			},
+			"variables": {},
+			"variableGroups": [],
+			"preDeployApprovals": {
+				"approvals": [
+					{
+						"rank": 1,
+						"isAutomated": true,
+						"isNotificationOn": false,
+						"id": 115
+					}
+				],
+				"approvalOptions": {
+					"requiredApproverCount": null,
+					"releaseCreatorCanBeApprover": false,
+					"autoTriggeredAndPreviousEnvironmentApprovedCanBeSkipped": false,
+					"enforceIdentityRevalidation": false,
+					"timeoutInMinutes": 0,
+					"executionOrder": 1
+				}
+			},
+			"deployStep": {
+				"id": 116
+			},
+			"postDeployApprovals": {
+				"approvals": [
+					{
+						"rank": 1,
+						"isAutomated": true,
+						"isNotificationOn": false,
+						"id": 117
+					}
+				],
+				"approvalOptions": {
+					"requiredApproverCount": null,
+					"releaseCreatorCanBeApprover": false,
+					"autoTriggeredAndPreviousEnvironmentApprovedCanBeSkipped": false,
+					"enforceIdentityRevalidation": false,
+					"timeoutInMinutes": 0,
+					"executionOrder": 2
+				}
+			},
+			"deployPhases": [
+				{
+					"deploymentInput": {
+						"parallelExecution": {
+							"parallelExecutionType": 0
+						},
+						"agentSpecification": {
+							"identifier": "windows-2019"
+						},
+						"skipArtifactsDownload": false,
+						"artifactsDownloadInput": {
+							"downloadInputs": [
+								{
+									"alias": "_build_mxcloud",
+									"artifactType": "Build",
+									"artifactDownloadMode": "All",
+									"artifactItems": []
+								}
+							]
+						},
+						"queueId": 18,
+						"demands": [],
+						"enableAccessToken": false,
+						"timeoutInMinutes": 0,
+						"jobCancelTimeoutInMinutes": 1,
+						"condition": "succeeded()",
+						"overrideInputs": {}
+					},
+					"rank": 1,
+					"phaseType": 1,
+					"name": "Agent job",
+					"refName": null,
+					"workflowTasks": [
+						{
+							"environment": {},
+							"taskId": "d9bafed4-0b18-4f58-968d-86655b4d2ce9",
+							"version": "2.*",
+							"name": "List files",
+							"refName": "",
+							"enabled": false,
+							"alwaysRun": false,
+							"continueOnError": false,
+							"timeoutInMinutes": 0,
+							"definitionType": "task",
+							"overrideInputs": {},
+							"condition": "succeeded()",
+							"inputs": {
+								"script": "ls -la && cd _build_mxcloud && ls -la && cd package && ls -la",
+								"workingDirectory": "",
+								"failOnStderr": "false"
+							}
+						},
+						{
+							"environment": {},
+							"taskId": "ffd54dce-ce4f-4080-bdda-a110f334feff",
+							"version": "1.*",
+							"name": "JSON to Variable",
+							"refName": "",
+							"enabled": true,
+							"alwaysRun": false,
+							"continueOnError": false,
+							"timeoutInMinutes": 0,
+							"definitionType": "task",
+							"overrideInputs": {},
+							"condition": "succeeded()",
+							"inputs": {
+								"jsonFile": "_build_mxcloud/package/package.json",
+								"shouldPrefixVariables": "true",
+								"variablePrefix": "package"
+							}
+						},
+						{
+							"environment": {},
+							"taskId": "d8a3d2d0-20f9-11e7-b752-57165c2d4193",
+							"version": "0.*",
+							"name": "Stop Environment",
+							"refName": "",
+							"enabled": true,
+							"alwaysRun": false,
+							"continueOnError": false,
+							"timeoutInMinutes": 0,
+							"definitionType": "task",
+							"overrideInputs": {},
+							"condition": "succeeded()",
+							"inputs": {
+								"webserviceEndpoint": "a48fb20d-4840-4ac3-8ac8-7f85d424cd05",
+								"relativeUrl": "api/1/apps/myapp/environments/Acceptance/stop",
+								"httpVerb": "POST",
+								"body": "",
+								"contentType": "application/json",
+								"saveResponseToFile": "true",
+								"outputFilePath": "response.json",
+								"headers": "{\n\"Mendix-Username\": \"User@email.com\",\n\"Mendix-ApiKey\":  \"5fffha03-2679-4h02-8fgb-d3cc779108f6\"\n}",
+								"allowInvalidSSLCertificate": "false",
+								"timeout": "120000"
+							}
+						},
+						{
+							"environment": {},
+							"taskId": "5a775a50-3372-1290-9ce0-1579c1e597fb",
+							"version": "1.*",
+							"name": "Wait for 60 seconds",
+							"refName": "",
+							"enabled": true,
+							"alwaysRun": false,
+							"continueOnError": false,
+							"timeoutInMinutes": 0,
+							"definitionType": "task",
+							"overrideInputs": {},
+							"condition": "succeeded()",
+							"inputs": {
+								"Value": "60",
+								"Unit": "seconds"
+							}
+						},
+						{
+							"environment": {},
+							"taskId": "d8a3d2d0-20f9-11e7-b752-57165c2d4193",
+							"version": "0.*",
+							"name": "Transport Package",
+							"refName": "",
+							"enabled": true,
+							"alwaysRun": false,
+							"continueOnError": false,
+							"timeoutInMinutes": 0,
+							"definitionType": "task",
+							"overrideInputs": {},
+							"condition": "succeeded()",
+							"inputs": {
+								"webserviceEndpoint": "a48fb20d-4840-4ac3-8ac8-7f85d424cd05",
+								"relativeUrl": "api/1/apps/myapp/environments/Acceptance/transport",
+								"httpVerb": "POST",
+								"body": "{\n     \"PackageId\" :  \"$(package.PackageId)\"\n}",
+								"contentType": "application/json",
+								"saveResponseToFile": "true",
+								"outputFilePath": "response.json",
+								"headers": "{\n\"Mendix-Username\": \"User@email.com\",\n\"Mendix-ApiKey\":  \"5fffha03-2679-4h02-8fgb-d3cc779108f6\"\n}",
+								"allowInvalidSSLCertificate": "false",
+								"timeout": "120000"
+							}
+						},
+						{
+							"environment": {},
+							"taskId": "5a775a50-3372-1290-9ce0-1579c1e597fb",
+							"version": "1.*",
+							"name": "Wait for 120 seconds",
+							"refName": "",
+							"enabled": false,
+							"alwaysRun": false,
+							"continueOnError": false,
+							"timeoutInMinutes": 0,
+							"definitionType": "task",
+							"overrideInputs": {},
+							"condition": "succeeded()",
+							"inputs": {
+								"Value": "120",
+								"Unit": "seconds"
+							}
+						},
+						{
+							"environment": {},
+							"taskId": "d8a3d2d0-20f9-11e7-b752-57165c2d4193",
+							"version": "0.*",
+							"name": "Start Environment",
+							"refName": "",
+							"enabled": true,
+							"alwaysRun": false,
+							"continueOnError": false,
+							"timeoutInMinutes": 0,
+							"definitionType": "task",
+							"overrideInputs": {},
+							"condition": "succeeded()",
+							"inputs": {
+								"webserviceEndpoint": "a48fb20d-4840-4ac3-8ac8-7f85d424cd05",
+								"relativeUrl": "api/1/apps/myapp/environments/Acceptance/start",
+								"httpVerb": "POST",
+								"body": "{\n     \"AutoSyncDb\" :  true\n}",
+								"contentType": "application/json",
+								"saveResponseToFile": "true",
+								"outputFilePath": "response.json",
+								"headers": "{\n\"Mendix-Username\": \"User@email.com\",\n\"Mendix-ApiKey\":  \"5fffha03-2679-4h02-8fgb-d3cc779108f6\"\n}",
+								"allowInvalidSSLCertificate": "false",
+								"timeout": "120000"
+							}
+						},
+						{
+							"environment": {},
+							"taskId": "5a775a50-3372-1290-9ce0-1579c1e597fb",
+							"version": "1.*",
+							"name": "Wait for 120 seconds",
+							"refName": "",
+							"enabled": true,
+							"alwaysRun": false,
+							"continueOnError": false,
+							"timeoutInMinutes": 0,
+							"definitionType": "task",
+							"overrideInputs": {},
+							"condition": "succeeded()",
+							"inputs": {
+								"Value": "120",
+								"Unit": "seconds"
+							}
+						}
+					]
+				}
+			],
+			"environmentOptions": {
+				"emailNotificationType": "OnlyOnFailure",
+				"emailRecipients": "release.environment.owner;release.creator",
+				"skipArtifactsDownload": false,
+				"timeoutInMinutes": 0,
+				"enableAccessToken": false,
+				"publishDeploymentStatus": true,
+				"badgeEnabled": false,
+				"autoLinkWorkItems": false,
+				"pullRequestDeploymentEnabled": false
+			},
+			"demands": [],
+			"conditions": [
+				{
+					"name": "ReleaseStarted",
+					"conditionType": 1,
+					"value": ""
+				}
+			],
+			"executionPolicy": {
+				"concurrencyCount": 1,
+				"queueDepthCount": 0
+			},
+			"schedules": [],
+			"currentRelease": {
+				"id": 88,
+				"url": "https://vsrm.dev.azure.com/TechnicalEnablement/d36155ba-10d2-4f78-b089-db5ccda3ffe3/_apis/Release/releases/88",
+				"_links": {}
+			},
+			"retentionPolicy": {
+				"daysToKeep": 30,
+				"releasesToKeep": 3,
+				"retainBuild": true
+			},
+			"processParameters": {},
+			"properties": {
+				"BoardsEnvironmentType": {
+					"$type": "System.String",
+					"$value": "unmapped"
+				},
+				"LinkBoardsWorkItems": {
+					"$type": "System.String",
+					"$value": "False"
+				}
+			},
+			"preDeploymentGates": {
+				"id": 0,
+				"gatesOptions": null,
+				"gates": []
+			},
+			"postDeploymentGates": {
+				"id": 0,
+				"gatesOptions": null,
+				"gates": []
+			},
+			"environmentTriggers": [],
+			"badgeUrl": "https://vsrm.dev.azure.com/TechnicalEnablement/_apis/public/Release/badge/d36155ba-10d2-4f78-b089-db5ccda3ffe3/12/39"
+		},
+		{
+			"id": 41,
+			"name": "Production",
+			"rank": 2,
+			"owner": {
+				"displayName": "Alistair Crawford",
+				"url": "https://spsprodweu5.vssps.visualstudio.com/Adf572c84-237b-45f0-8b98-91c401828d20/_apis/Identities/3d81c34d-9812-400c-bd88-f99e4a331c6a",
+				"_links": {
+					"avatar": {
+						"href": "https://dev.azure.com/TechnicalEnablement/_apis/GraphProfile/MemberAvatars/aad.YzNkNTQwZTItYjc5MS03OGE5LTg3YzItZDEyYmNmZjc0ZmFh"
+					}
+				},
+				"id": "3d81c34d-9812-400c-bd88-f99e4a331c6a",
+				"uniqueName": "User@email.com",
+				"imageUrl": "https://dev.azure.com/TechnicalEnablement/_apis/GraphProfile/MemberAvatars/aad.YzNkNTQwZTItYjc5MS03OGE5LTg3YzItZDEyYmNmZjc0ZmFh",
+				"descriptor": "aad.YzNkNTQwZTItYjc5MS03OGE5LTg3YzItZDEyYmNmZjc0ZmFh"
+			},
+			"variables": {},
+			"variableGroups": [],
+			"preDeployApprovals": {
+				"approvals": [
+					{
+						"rank": 1,
+						"isAutomated": true,
+						"isNotificationOn": false,
+						"id": 121
+					}
+				],
+				"approvalOptions": {
+					"requiredApproverCount": null,
+					"releaseCreatorCanBeApprover": false,
+					"autoTriggeredAndPreviousEnvironmentApprovedCanBeSkipped": false,
+					"enforceIdentityRevalidation": false,
+					"timeoutInMinutes": 0,
+					"executionOrder": 1
+				}
+			},
+			"deployStep": {
+				"id": 122
+			},
+			"postDeployApprovals": {
+				"approvals": [
+					{
+						"rank": 1,
+						"isAutomated": true,
+						"isNotificationOn": false,
+						"id": 123
+					}
+				],
+				"approvalOptions": {
+					"requiredApproverCount": null,
+					"releaseCreatorCanBeApprover": false,
+					"autoTriggeredAndPreviousEnvironmentApprovedCanBeSkipped": false,
+					"enforceIdentityRevalidation": false,
+					"timeoutInMinutes": 0,
+					"executionOrder": 2
+				}
+			},
+			"deployPhases": [
+				{
+					"deploymentInput": {
+						"parallelExecution": {
+							"parallelExecutionType": 0
+						},
+						"agentSpecification": {
+							"identifier": "windows-2019"
+						},
+						"skipArtifactsDownload": false,
+						"artifactsDownloadInput": {
+							"downloadInputs": [
+								{
+									"alias": "_build_mxcloud",
+									"artifactType": "Build",
+									"artifactDownloadMode": "All",
+									"artifactItems": []
+								}
+							]
+						},
+						"queueId": 18,
+						"demands": [],
+						"enableAccessToken": false,
+						"timeoutInMinutes": 0,
+						"jobCancelTimeoutInMinutes": 1,
+						"condition": "succeeded()",
+						"overrideInputs": {}
+					},
+					"rank": 1,
+					"phaseType": 1,
+					"name": "Agent job",
+					"refName": null,
+					"workflowTasks": [
+						{
+							"environment": {},
+							"taskId": "d9bafed4-0b18-4f58-968d-86655b4d2ce9",
+							"version": "2.*",
+							"name": "List files",
+							"refName": "",
+							"enabled": false,
+							"alwaysRun": false,
+							"continueOnError": false,
+							"timeoutInMinutes": 0,
+							"definitionType": "task",
+							"overrideInputs": {},
+							"condition": "succeeded()",
+							"inputs": {
+								"script": "ls -la && cd _build_mxcloud && ls -la && cd package && ls -la",
+								"workingDirectory": "",
+								"failOnStderr": "false"
+							}
+						},
+						{
+							"environment": {},
+							"taskId": "ffd54dce-ce4f-4080-bdda-a110f334feff",
+							"version": "1.*",
+							"name": "JSON to Variable",
+							"refName": "",
+							"enabled": true,
+							"alwaysRun": false,
+							"continueOnError": false,
+							"timeoutInMinutes": 0,
+							"definitionType": "task",
+							"overrideInputs": {},
+							"condition": "succeeded()",
+							"inputs": {
+								"jsonFile": "_build_mxcloud/package/package.json",
+								"shouldPrefixVariables": "true",
+								"variablePrefix": "package"
+							}
+						},
+						{
+							"environment": {},
+							"taskId": "d8a3d2d0-20f9-11e7-b752-57165c2d4193",
+							"version": "0.*",
+							"name": "Stop Environment",
+							"refName": "",
+							"enabled": true,
+							"alwaysRun": false,
+							"continueOnError": false,
+							"timeoutInMinutes": 0,
+							"definitionType": "task",
+							"overrideInputs": {},
+							"condition": "succeeded()",
+							"inputs": {
+								"webserviceEndpoint": "a48fb20d-4840-4ac3-8ac8-7f85d424cd05",
+								"relativeUrl": "api/1/apps/myapp/environments/Acceptance/stop",
+								"httpVerb": "POST",
+								"body": "",
+								"contentType": "application/json",
+								"saveResponseToFile": "true",
+								"outputFilePath": "response.json",
+								"headers": "{\n\"Mendix-Username\": \"User@email.com\",\n\"Mendix-ApiKey\":  \"5fffha03-2679-4h02-8fgb-d3cc779108f6\"\n}",
+								"allowInvalidSSLCertificate": "false",
+								"timeout": "120000"
+							}
+						},
+						{
+							"environment": {},
+							"taskId": "5a775a50-3372-1290-9ce0-1579c1e597fb",
+							"version": "1.*",
+							"name": "Wait for 60 seconds",
+							"refName": "",
+							"enabled": true,
+							"alwaysRun": false,
+							"continueOnError": false,
+							"timeoutInMinutes": 0,
+							"definitionType": "task",
+							"overrideInputs": {},
+							"condition": "succeeded()",
+							"inputs": {
+								"Value": "60",
+								"Unit": "seconds"
+							}
+						},
+						{
+							"environment": {},
+							"taskId": "d8a3d2d0-20f9-11e7-b752-57165c2d4193",
+							"version": "0.*",
+							"name": "Transport Package",
+							"refName": "",
+							"enabled": true,
+							"alwaysRun": false,
+							"continueOnError": false,
+							"timeoutInMinutes": 0,
+							"definitionType": "task",
+							"overrideInputs": {},
+							"condition": "succeeded()",
+							"inputs": {
+								"webserviceEndpoint": "a48fb20d-4840-4ac3-8ac8-7f85d424cd05",
+								"relativeUrl": "api/1/apps/myapp/environments/Acceptance/transport",
+								"httpVerb": "POST",
+								"body": "{\n     \"PackageId\" :  \"$(package.PackageId)\"\n}",
+								"contentType": "application/json",
+								"saveResponseToFile": "true",
+								"outputFilePath": "response.json",
+								"headers": "{\n\"Mendix-Username\": \"User@email.com\",\n\"Mendix-ApiKey\":  \"5fffha03-2679-4h02-8fgb-d3cc779108f6\"\n}",
+								"allowInvalidSSLCertificate": "false",
+								"timeout": "120000"
+							}
+						},
+						{
+							"environment": {},
+							"taskId": "5a775a50-3372-1290-9ce0-1579c1e597fb",
+							"version": "1.*",
+							"name": "Wait for 120 seconds",
+							"refName": "",
+							"enabled": false,
+							"alwaysRun": false,
+							"continueOnError": false,
+							"timeoutInMinutes": 0,
+							"definitionType": "task",
+							"overrideInputs": {},
+							"condition": "succeeded()",
+							"inputs": {
+								"Value": "120",
+								"Unit": "seconds"
+							}
+						},
+						{
+							"environment": {},
+							"taskId": "d8a3d2d0-20f9-11e7-b752-57165c2d4193",
+							"version": "0.*",
+							"name": "Start Environment",
+							"refName": "",
+							"enabled": true,
+							"alwaysRun": false,
+							"continueOnError": false,
+							"timeoutInMinutes": 0,
+							"definitionType": "task",
+							"overrideInputs": {},
+							"condition": "succeeded()",
+							"inputs": {
+								"webserviceEndpoint": "a48fb20d-4840-4ac3-8ac8-7f85d424cd05",
+								"relativeUrl": "api/1/apps/myapp/environments/Acceptance/start",
+								"httpVerb": "POST",
+								"body": "{\n     \"AutoSyncDb\" :  true\n}",
+								"contentType": "application/json",
+								"saveResponseToFile": "true",
+								"outputFilePath": "response.json",
+								"headers": "{\n\"Mendix-Username\": \"User@email.com\",\n\"Mendix-ApiKey\":  \"5fffha03-2679-4h02-8fgb-d3cc779108f6\"\n}",
+								"allowInvalidSSLCertificate": "false",
+								"timeout": "120000"
+							}
+						},
+						{
+							"environment": {},
+							"taskId": "5a775a50-3372-1290-9ce0-1579c1e597fb",
+							"version": "1.*",
+							"name": "Wait for 120 seconds",
+							"refName": "",
+							"enabled": true,
+							"alwaysRun": false,
+							"continueOnError": false,
+							"timeoutInMinutes": 0,
+							"definitionType": "task",
+							"overrideInputs": {},
+							"condition": "succeeded()",
+							"inputs": {
+								"Value": "120",
+								"Unit": "seconds"
+							}
+						}
+					]
+				}
+			],
+			"environmentOptions": {
+				"emailNotificationType": "OnlyOnFailure",
+				"emailRecipients": "release.environment.owner;release.creator",
+				"skipArtifactsDownload": false,
+				"timeoutInMinutes": 0,
+				"enableAccessToken": false,
+				"publishDeploymentStatus": true,
+				"badgeEnabled": false,
+				"autoLinkWorkItems": false,
+				"pullRequestDeploymentEnabled": false
+			},
+			"demands": [],
+			"conditions": [],
+			"executionPolicy": {
+				"concurrencyCount": 1,
+				"queueDepthCount": 0
+			},
+			"schedules": [],
+			"currentRelease": {
+				"id": 0,
+				"url": "https://vsrm.dev.azure.com/TechnicalEnablement/d36155ba-10d2-4f78-b089-db5ccda3ffe3/_apis/Release/releases/0",
+				"_links": {}
+			},
+			"retentionPolicy": {
+				"daysToKeep": 30,
+				"releasesToKeep": 3,
+				"retainBuild": true
+			},
+			"processParameters": {},
+			"properties": {
+				"BoardsEnvironmentType": {
+					"$type": "System.String",
+					"$value": "unmapped"
+				},
+				"LinkBoardsWorkItems": {
+					"$type": "System.String",
+					"$value": "False"
+				}
+			},
+			"preDeploymentGates": {
+				"id": 0,
+				"gatesOptions": null,
+				"gates": []
+			},
+			"postDeploymentGates": {
+				"id": 0,
+				"gatesOptions": null,
+				"gates": []
+			},
+			"environmentTriggers": [],
+			"badgeUrl": "https://vsrm.dev.azure.com/TechnicalEnablement/_apis/public/Release/badge/d36155ba-10d2-4f78-b089-db5ccda3ffe3/12/41"
+		}
+	],
+	"artifacts": [
+		{
+			"sourceId": "d36155ba-10d2-4f78-b089-db5ccda3ffe3:7",
+			"type": "Build",
+			"alias": "_build_mxcloud",
+			"definitionReference": {
+				"artifactSourceDefinitionUrl": {
+					"id": "https://dev.azure.com/TechnicalEnablement/_permalink/_build/index?collectionId=2d171895-043d-49a7-b15f-bc871ecbbbec&projectId=d36155ba-10d2-4f78-b089-db5ccda3ffe3&definitionId=7",
+					"name": ""
+				},
+				"defaultVersionBranch": {
+					"id": "",
+					"name": ""
+				},
+				"defaultVersionSpecific": {
+					"id": "",
+					"name": ""
+				},
+				"defaultVersionTags": {
+					"id": "",
+					"name": ""
+				},
+				"defaultVersionType": {
+					"id": "latestType",
+					"name": "Latest"
+				},
+				"definition": {
+					"id": "7",
+					"name": "build_mxcloud"
+				},
+				"definitions": {
+					"id": "",
+					"name": ""
+				},
+				"IsMultiDefinitionType": {
+					"id": "False",
+					"name": "False"
+				},
+				"project": {
+					"id": "d36155ba-10d2-4f78-b089-db5ccda3ffe3",
+					"name": "Mendix World CICD"
+				},
+				"repository": {
+					"id": "",
+					"name": ""
+				}
+			},
+			"isPrimary": true,
+			"isRetained": false
+		}
+	],
+	"triggers": [
+		{
+			"artifactAlias": "_build_mxcloud",
+			"triggerConditions": [],
+			"triggerType": 1
+		}
+	],
+	"releaseNameFormat": "Release-$(rev:r)",
+	"tags": [],
+	"properties": {
+		"DefinitionCreationSource": {
+			"$type": "System.String",
+			"$value": "ReleaseNew"
+		},
+		"IntegrateBoardsWorkItems": {
+			"$type": "System.String",
+			"$value": "False"
+		},
+		"IntegrateJiraWorkItems": {
+			"$type": "System.String",
+			"$value": "false"
+		}
+	},
+	"id": 12,
+	"name": "release_mxcloud",
+	"path": "\\mendix_mxcloud",
+	"projectReference": null,
+	"url": "https://vsrm.dev.azure.com/TechnicalEnablement/d36155ba-10d2-4f78-b089-db5ccda3ffe3/_apis/Release/definitions/12",
+	"_links": {
+		"self": {
+			"href": "https://vsrm.dev.azure.com/TechnicalEnablement/d36155ba-10d2-4f78-b089-db5ccda3ffe3/_apis/Release/definitions/12"
+		},
+		"web": {
+			"href": "https://dev.azure.com/TechnicalEnablement/d36155ba-10d2-4f78-b089-db5ccda3ffe3/_release?definitionId=12"
+		}
+	}
+}

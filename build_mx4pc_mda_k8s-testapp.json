@@ -1,0 +1,323 @@
+{
+	"options": [
+		{
+			"enabled": false,
+			"definition": {
+				"id": "5d58cc01-7c75-450c-be18-a388ddb129ec"
+			},
+			"inputs": {
+				"branchFilters": "[\"+refs/heads/*\"]",
+				"additionalFields": "{}"
+			}
+		},
+		{
+			"enabled": false,
+			"definition": {
+				"id": "a9db38f9-9fdc-478c-b0f9-464221e58316"
+			},
+			"inputs": {
+				"workItemType": "Issue",
+				"assignToRequestor": "true",
+				"additionalFields": "{}"
+			}
+		}
+	],
+	"triggers": [
+		{
+			"branchFilters": [],
+			"pathFilters": [
+				"+trunk"
+			],
+			"batchChanges": false,
+			"maxConcurrentBuildsPerBranch": 1,
+			"pollingInterval": 60,
+			"pollingJobId": "dc18969f-b38b-4a3c-96d1-7a62b7cd50e4",
+			"triggerType": 2
+		}
+	],
+	"variables": {
+		"mda_url": {
+			"value": ""
+		},
+		"Mendix.Password": {
+			"value": "Password"
+		},
+		"Mendix.Username": {
+			"value": "username@email.com"
+		},
+		"Storage.container": {
+			"value": "mdastorage-container"
+		},
+		"Storage.name": {
+			"value": "mdastorage"
+		},
+		"system.debug": {
+			"value": "true",
+			"allowOverride": true
+		}
+	},
+	"properties": {},
+	"tags": [],
+	"_links": {
+		"self": {
+			"href": "https://dev.azure.com/TechnicalEnablement/d36155ba-10d2-4f78-b089-db5ccda3ffe3/_apis/build/Definitions/6?revision=32"
+		},
+		"web": {
+			"href": "https://dev.azure.com/TechnicalEnablement/d36155ba-10d2-4f78-b089-db5ccda3ffe3/_build/definition?definitionId=6"
+		},
+		"editor": {
+			"href": "https://dev.azure.com/TechnicalEnablement/d36155ba-10d2-4f78-b089-db5ccda3ffe3/_build/designer?id=6&_a=edit-build-definition"
+		},
+		"badge": {
+			"href": "https://dev.azure.com/TechnicalEnablement/d36155ba-10d2-4f78-b089-db5ccda3ffe3/_apis/build/status/6"
+		}
+	},
+	"jobAuthorizationScope": 1,
+	"jobTimeoutInMinutes": 60,
+	"jobCancelTimeoutInMinutes": 5,
+	"process": {
+		"phases": [
+			{
+				"steps": [
+					{
+						"environment": {},
+						"enabled": true,
+						"continueOnError": false,
+						"alwaysRun": false,
+						"displayName": "Download mxbuild.py",
+						"timeoutInMinutes": 0,
+						"condition": "succeeded()",
+						"task": {
+							"id": "e213ff0f-5d5c-4791-802d-52ea3e7be1f1",
+							"versionSpec": "2.*",
+							"definitionType": "task"
+						},
+						"inputs": {
+							"targetType": "inline",
+							"filePath": "",
+							"arguments": "",
+							"script": "$url = \"https://raw.githubusercontent.com/MXClyde/MendixModelTools/master/Scripts/mxbuild.py\"\n$output = \" $(System.DefaultWorkingDirectory)\\mxbuild.py\"\n$start_time = Get-Date\n\n(New-Object System.Net.WebClient).DownloadFile($url, $output)\n\nWrite-Output \"Time taken: $((Get-Date).Subtract($start_time).Seconds) second(s)\"\n\nNew-Item -ItemType directory -Path $(System.DefaultWorkingDirectory)\\mxLib",
+							"errorActionPreference": "stop",
+							"failOnStderr": "false",
+							"showWarnings": "false",
+							"ignoreLASTEXITCODE": "false",
+							"pwsh": "false",
+							"workingDirectory": "",
+							"runScriptInSeparateScope": "false"
+						}
+					},
+					{
+						"environment": {},
+						"enabled": true,
+						"continueOnError": false,
+						"alwaysRun": false,
+						"displayName": "Run mxbuild.py",
+						"timeoutInMinutes": 0,
+						"condition": "succeeded()",
+						"task": {
+							"id": "6392f95f-7e76-4a18-b3c7-7f078d2f7700",
+							"versionSpec": "0.*",
+							"definitionType": "task"
+						},
+						"inputs": {
+							"scriptSource": "filePath",
+							"scriptPath": "mxbuild.py",
+							"script": "",
+							"arguments": "-t \"$(Build.Repository.ID)/$(Build.SourceBranch)\" -u \"$(Mendix.Username)\" -p \"$(Mendix.Password)\" -java \"%JAVA_HOME_11_X64%\" -r \"$(Build.SourceVersion)\" -d true -o project_$(Build.SourceVersion)_$(Build.BuildId).mda",
+							"pythonInterpreter": "",
+							"workingDirectory": "",
+							"failOnStderr": "false"
+						}
+					},
+					{
+						"environment": {},
+						"enabled": true,
+						"continueOnError": false,
+						"alwaysRun": false,
+						"displayName": "List files",
+						"timeoutInMinutes": 0,
+						"condition": "succeeded()",
+						"task": {
+							"id": "d9bafed4-0b18-4f58-968d-86655b4d2ce9",
+							"versionSpec": "2.*",
+							"definitionType": "task"
+						},
+						"inputs": {
+							"script": "cd\ndir",
+							"workingDirectory": "",
+							"failOnStderr": "false"
+						}
+					},
+					{
+						"environment": {},
+						"enabled": true,
+						"continueOnError": false,
+						"alwaysRun": false,
+						"displayName": "Upload files to Azure Storage container",
+						"timeoutInMinutes": 0,
+						"condition": "succeeded()",
+						"task": {
+							"id": "7609a96a-13e3-4fc4-85cf-0ffecfc47d41",
+							"versionSpec": "1.*",
+							"definitionType": "task"
+						},
+						"inputs": {
+							"ConnectedServiceName": "c2c370e0-9377-4cd9-a525-2536340322a9",
+							"action": "create",
+							"resourceGroupName": "my-resource-group",
+							"location": "West Europe",
+							"storageAccountName": "mxwmdastorage",
+							"containerName": "mxwmdastorage-container",
+							"uploadDirectory": "$(System.DefaultWorkingDirectory)\\builds\\",
+							"sasTokenStartTime": "1m",
+							"sasTokenExpiryTime": "1h",
+							"vstsSasTokenVariableName": ""
+						}
+					},
+					{
+						"environment": {},
+						"enabled": true,
+						"continueOnError": false,
+						"alwaysRun": false,
+						"displayName": "Write MDA URL to file",
+						"timeoutInMinutes": 0,
+						"condition": "succeeded()",
+						"task": {
+							"id": "d9bafed4-0b18-4f58-968d-86655b4d2ce9",
+							"versionSpec": "2.*",
+							"definitionType": "task"
+						},
+						"inputs": {
+							"script": "echo https://$(Storage.name).blob.core.windows.net/$(Storage.container)/D:/a/1/s/builds/project_$(Build.SourceVersion)_$(Build.BuildId).mda > $(Build.ArtifactStagingDirectory)/mda.txt",
+							"workingDirectory": "",
+							"failOnStderr": "false"
+						}
+					},
+					{
+						"environment": {},
+						"enabled": true,
+						"continueOnError": false,
+						"alwaysRun": false,
+						"displayName": "List FIles",
+						"timeoutInMinutes": 0,
+						"condition": "succeeded()",
+						"task": {
+							"id": "d9bafed4-0b18-4f58-968d-86655b4d2ce9",
+							"versionSpec": "2.*",
+							"definitionType": "task"
+						},
+						"inputs": {
+							"script": "dir",
+							"workingDirectory": "",
+							"failOnStderr": "false"
+						}
+					},
+					{
+						"environment": {},
+						"enabled": true,
+						"continueOnError": false,
+						"alwaysRun": false,
+						"displayName": "Publish Artifact: mda_file",
+						"timeoutInMinutes": 0,
+						"condition": "succeeded()",
+						"task": {
+							"id": "2ff763a7-ce83-4e1f-bc89-0ae63477cebe",
+							"versionSpec": "1.*",
+							"definitionType": "task"
+						},
+						"inputs": {
+							"PathtoPublish": "$(Build.ArtifactStagingDirectory)",
+							"ArtifactName": "mda_file",
+							"ArtifactType": "Container",
+							"TargetPath": "",
+							"Parallel": "false",
+							"ParallelCount": "8",
+							"FileCopyOptions": "",
+							"StoreAsTar": "false"
+						}
+					}
+				],
+				"name": "Agent job 1",
+				"refName": "Job_1",
+				"condition": "succeeded()",
+				"target": {
+					"executionOptions": {
+						"type": 0
+					},
+					"allowScriptsAuthAccessOption": false,
+					"type": 1
+				},
+				"jobAuthorizationScope": 1
+			}
+		],
+		"target": {
+			"agentSpecification": {
+				"identifier": "windows-2019"
+			}
+		},
+		"type": 1
+	},
+	"repository": {
+		"properties": {
+			"cleanOptions": "0",
+			"svnMapping": "{\"mappings\":[{\"serverPath\":\"$(build.sourceBranch)\",\"localPath\":\"\",\"revision\":\"HEAD\",\"depth\":3,\"ignoreExternals\":true}]}",
+			"connectedServiceId": "3df97cc5-4d62-49d6-b57d-0be414d74830"
+		},
+		"id": "https://teamserver.sprintr.com/d73195b2-08d5-4749-ab75-edefdc8cf793",
+		"type": "Svn",
+		"name": "d73195b2-08d5-4749-ab75-edefdc8cf793",
+		"url": "https://teamserver.sprintr.com/d73195b2-08d5-4749-ab75-edefdc8cf793",
+		"defaultBranch": "trunk",
+		"clean": "false",
+		"checkoutSubmodules": false
+	},
+	"processParameters": {},
+	"quality": 1,
+	"authoredBy": {
+		"displayName": "Alistair Crawford",
+		"url": "https://spsprodweu5.vssps.visualstudio.com/Adf572c84-237b-45f0-8b98-91c401828d20/_apis/Identities/3d81c34d-9812-400c-bd88-f99e4a331c6a",
+		"_links": {
+			"avatar": {
+				"href": "https://dev.azure.com/TechnicalEnablement/_apis/GraphProfile/MemberAvatars/aad.YzNkNTQwZTItYjc5MS03OGE5LTg3YzItZDEyYmNmZjc0ZmFh"
+			}
+		},
+		"id": "3d81c34d-9812-400c-bd88-f99e4a331c6a",
+		"uniqueName": "Alistair.Crawford@mendix.com",
+		"imageUrl": "https://dev.azure.com/TechnicalEnablement/_apis/GraphProfile/MemberAvatars/aad.YzNkNTQwZTItYjc5MS03OGE5LTg3YzItZDEyYmNmZjc0ZmFh",
+		"descriptor": "aad.YzNkNTQwZTItYjc5MS03OGE5LTg3YzItZDEyYmNmZjc0ZmFh"
+	},
+	"drafts": [],
+	"queue": {
+		"_links": {
+			"self": {
+				"href": "https://dev.azure.com/TechnicalEnablement/_apis/build/Queues/18"
+			}
+		},
+		"id": 18,
+		"name": "Azure Pipelines",
+		"url": "https://dev.azure.com/TechnicalEnablement/_apis/build/Queues/18",
+		"pool": {
+			"id": 9,
+			"name": "Azure Pipelines",
+			"isHosted": true
+		}
+	},
+	"id": 6,
+	"name": "build_mx4pc_mda_k8s-testapp",
+	"url": "https://dev.azure.com/TechnicalEnablement/d36155ba-10d2-4f78-b089-db5ccda3ffe3/_apis/build/Definitions/6?revision=32",
+	"uri": "vstfs:///Build/Definition/6",
+	"path": "\\",
+	"type": 2,
+	"queueStatus": 0,
+	"revision": 32,
+	"createdDate": "2021-07-15T12:53:49.693Z",
+	"project": {
+		"id": "d36155ba-10d2-4f78-b089-db5ccda3ffe3",
+		"name": "Mendix World CICD",
+		"url": "https://dev.azure.com/TechnicalEnablement/_apis/projects/d36155ba-10d2-4f78-b089-db5ccda3ffe3",
+		"state": 1,
+		"revision": 20,
+		"visibility": 0,
+		"lastUpdateTime": "2021-05-27T09:18:30.740Z"
+	}
+}
