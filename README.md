@@ -394,7 +394,7 @@ No changes needed. This will take all of the tokens in the templatised .yaml fil
 
 Here you will need to add a "Kubernetes service connection" to your Azure DevOps project similar to the "Azure Resource Management Connection" we added earlier.  For the non-Azure Kubernetes clusters, you can use the kubeconfig file to configure (More [here](https://docs.microsoft.com/en-us/azure/devops/pipelines/library/service-endpoints?view=azure-devops&tabs=yaml#kubernetes-service-connection)) 
 
-This will use the ```kubectl apply`` operation on the cluster using the .yaml CR file.
+This will use the ```kubectl apply``` operation on the cluster using the .yaml CR file.
 
 Now we should be able to run the release.
 
